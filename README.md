@@ -9,9 +9,11 @@
 - chain33.toml: 主程序对应的配置文件
 - genesis.json，priv_validator_1.json， priv_validator_2.json，priv_validator_3.json， priv_validator_4.json： 4个节点需要的公私钥文件
 
+
 > 备注：
 - 这边已经把chain33和chain33-cli两个可执行文件都编译好了，大家也可以下载源码自己编译。
 - chain33 源码地址 [https://github.com/33cn/plugin](https://github.com/33cn/plugin) 
+
 
 > 环境启动前准备工作：
 - 修改样例中的配置文件 chain33.toml，将两处的 IP 地址替换为所部署节点的 IP
@@ -28,12 +30,14 @@ validatorNodes=["10.0.0.1:46656","10.0.0.2:46656","10.0.0.3:46656","10.0.0.4:466
 
 - 将可执行文件 chain33 和 chain33-cli，修改后的配置文件 chain33.toml以及genesis.json 拷贝一份到4个节点上，并将 priv_validator_1.json， priv_validator_2.json，priv_validator_3.json， priv_validator_4.json 分别拷贝到对应的节点上并重命名为 priv_validator.json
 
+
 > 启动环境：
 - 在4个节点上启动 chain33，顺序不分前后，建议在一分钟内全都启动
 
 ```shell
 chain33 -f chain33.toml
 ```
+
 
 > 状态检查
 - 查询节点是否已经和其它节点同步
