@@ -1,7 +1,7 @@
 # chain33联盟链部署
 ## 同pbft一样，tendermint的节点数也是要满足N>3f，所以至少3f+1个节点
 
-### 下面以部署4节点集群为例
+#### 部署4节点的联盟链集群
 
 ```ini
 下载编译好的文件（在每个节点上下载并解压）
@@ -20,9 +20,11 @@ cd chain33_tendermint_v6.3.0/
 - chain33.toml: 主程序对应的配置文件
 - genesis.json，priv_validator_1.json， priv_validator_2.json，priv_validator_3.json， priv_validator_4.json： 4个节点需要的公私钥文件
 
+
 > 备注：
 - priv_validator_x.json中是各个节点私钥信息，具有隐私性，不应该公开。 此处只为简化搭建流程。
 - 正式环境部署时，参考https://chain.33.cn/document/129  中的流程
+
 
 > 环境启动前准备工作：
 - 修改样例中的配置文件 chain33.toml，将两处的 IP 地址替换为所部署节点的 IP
@@ -42,12 +44,14 @@ validatorNodes=["10.0.0.1:46656","10.0.0.2:46656","10.0.0.3:46656","10.0.0.4:466
 - 第三个节点保留priv_validator_3.json 并将其重命名为 priv_validator.json。 同时可以删除priv_validator_1.json，priv_validator_2.json，priv_validator_4.json
 - 第四个节点保留priv_validator_4.json 并将其重命名为 priv_validator.json。 同时可以删除priv_validator_1.json，priv_validator_2.json，priv_validator_3.json
 
+
 > 启动环境：
 - 在4个节点上启动 chain33，顺序不分前后，建议在一分钟内全都启动
 
 ```shell
 nohup ./chain33 -f chain33.test.toml >> log.out 2>&1 &
 ```
+
 
 > 状态检查
 - 查询节点是否已经和其它节点同步(5分钟左右)
