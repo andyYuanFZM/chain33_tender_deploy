@@ -64,7 +64,7 @@ true
 
 - 查看各个节点的信息
 ```shell
-./chain33-cli net peer_info
+./chain33-cli net peer info
 {
     "peers": [
         {
