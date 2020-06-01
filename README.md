@@ -5,13 +5,13 @@
 
 ```ini
 下载编译好的文件（在每个节点上下载并解压）
-wget https://bty33.oss-cn-shanghai.aliyuncs.com/chain33_tendermint_v6.3.0.tar.gz
+wget https://bty33.oss-cn-shanghai.aliyuncs.com/chain33_consortium_v6.4.0.tar.gz
 
 解压
-tar -zxvf chain33_tendermint_v6.3.0.tar.gz
+tar -zxvf chain33_consortium_v6.4.0.tar.gz
 
 进入目录
-cd chain33_tendermint_v6.3.0/
+cd chain33_consortium_v6.4.0/
 ```
 
 > 文件介绍：
