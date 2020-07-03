@@ -5,13 +5,13 @@
 
 ```ini
 下载编译好的文件（在每个节点上下载并解压）
-wget https://bty33.oss-cn-shanghai.aliyuncs.com/chain33_tendermint_v6.3.0.tar.gz
+wget https://bty33.oss-cn-shanghai.aliyuncs.com/chain33_consortium_v6.4.0.tar.gz
 
 解压
-tar -zxvf chain33_tendermint_v6.3.0.tar.gz
+tar -zxvf chain33_consortium_v6.4.0.tar.gz
 
 进入目录
-cd chain33_tendermint_v6.3.0/
+cd chain33_consortium_v6.4.0/
 ```
 
 > 文件介绍：
@@ -33,6 +33,8 @@ cd chain33_tendermint_v6.3.0/
 ......
 [p2p]
 seeds=["10.0.0.1:13802","10.0.0.2:13802","10.0.0.3:13802","10.0.0.4:13802"]
+# channel用于区分不同的p2p网络，不同网络自己设定值范围从8000-9000
+channel=8001
 ......
 [consensus.sub.tendermint]
 validatorNodes=["10.0.0.1:46656","10.0.0.2:46656","10.0.0.3:46656","10.0.0.4:46656"]
@@ -62,7 +64,7 @@ true
 
 - 查看各个节点的信息
 ```shell
-./chain33-cli net peer_info
+./chain33-cli net peer info
 {
     "peers": [
         {
