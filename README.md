@@ -32,22 +32,22 @@ cd chain33_consortium
 修改样例中的配置文件 chain33.toml，将以下两处的 IP 地址替换为所部署节点的 IP
 
 ```ini
-......
+# 修改P2P种子节点参数
 [p2p]
 # 使用自己服务器的IP替换以下IP，端口不变
 seeds=["10.0.0.1:13802","10.0.0.2:13802","10.0.0.3:13802","10.0.0.4:13802"]
 # channel用于区分不同的p2p网络，不同网络自己设定值范围，值从8000-9000 
 channel=8001
-......
+
+# 修改共识节点参数
 [consensus.sub.tendermint]
 # 使用自己服务器的IP替换以下IP，端口不变
 validatorNodes=["10.0.0.1:46656","10.0.0.2:46656","10.0.0.3:46656","10.0.0.4:46656"]
-......
 ```
 
 ##### 2.2 节点公私钥配置
-编辑公私钥文件，压缩包里已经给每一个节点预先生成公私钥匙，只需要把目录中的文件移到和chain33, chain33-cli平级目录下。
-比如第一个节点把peer0中的genesis.json 和priv_validator.json移到 chain33_consortium目录下，其余几个节点类推，最终每一个节点的目录结构如下:
+编辑公私钥文件，压缩包里已经给每一个节点预先生成公私钥匙，只需要把目录中的文件移到和chain33, chain33-cli平级目录下。  
+比如第一个节点把peer0中的genesis.json 和priv_validator.json移到 chain33_consortium目录下，第二个节点移动peer1目录下的文件，其余几个节点类推，最终每一个节点的目录结构如下:  
 ```ini
 root@iZuf6j6oe6ah1d4227d2hfZ:/home/chain33_consortium# ls
 chain33  chain33-cli  chain33.toml  genesis.json priv_validator.json
