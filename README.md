@@ -1,7 +1,7 @@
 # chain33联盟链部署
 ## 同pbft一样，tendermint的节点数也是要满足N>3f，所以至少3f+1个节点
 
-#### 部署4节点的联盟链集群
+#### 1. 联盟链安装程序准备
 
 ```ini
 # 测试采用4台服务器，在每一台服务器上下载以下区块链程序压缩包：
@@ -12,7 +12,6 @@ tar -zxvf chain33_consortium.tar.gz
 
 # 进入目录
 cd chain33_consortium
-```
 
 > 文件介绍：
 - chain33:   chain33区块链的主程序文件
@@ -25,9 +24,12 @@ cd chain33_consortium
 - 正式环境部署时，需要每个节点自己去生成节点的公私钥，将公钥汇总于genesis.json文件中，私钥自己保存
 - 执行： ./chain33-cli valnode init_keyfile -n 1 -t bls    -n：为几个节点生成公私钥对，-t：采用的加密方式
 
+```
 
-> 环境启动前准备工作：
-- 修改样例中的配置文件 chain33.toml，将两处的 IP 地址替换为所部署节点的 IP
+#### 2. 联盟链配置
+
+ ##### 2.1 区块链参数配置：
+修改样例中的配置文件 chain33.toml，将以下两处的 IP 地址替换为所部署节点的 IP
 
 ```ini
 ......
@@ -43,6 +45,7 @@ validatorNodes=["10.0.0.1:46656","10.0.0.2:46656","10.0.0.3:46656","10.0.0.4:466
 ......
 ```
 
+##### 2.2 节点公私钥配置
 编辑公私钥文件，压缩包里已经给每一个节点预先生成公私钥匙，只需要把目录中的文件移到和chain33, chain33-cli平级目录下。
 比如第一个节点把peer0中的genesis.json 和priv_validator.json移到 chain33_consortium目录下，其余几个节点类推，最终每一个节点的目录结构如下:
 ```ini
@@ -50,23 +53,24 @@ root@iZuf6j6oe6ah1d4227d2hfZ:/home/chain33_consortium# ls
 chain33  chain33-cli  chain33.toml  genesis.json priv_validator.json
 ```
 
-> 启动环境：
+#### 3. 启动区块链集群
 - 在4个节点上启动 chain33，顺序不分前后，建议在一分钟内全都启动
 
-```shell
+```ini
 nohup ./chain33 -f chain33.test.toml >> log.out 2>&1 &
 ```
 
-
-> 状态检查
+#### 4. 区块链状态检查
 - 查询节点是否已经和其它节点同步(5分钟左右)
-```shell
-$ ./chain33-cli net is_sync
+```ini
+# 返回true代表同步完成
+./chain33-cli net is_sync
 true
 ```
 
-- 查看各个节点的信息
+
 ```shell
+# 查看各个节点的信息
 ./chain33-cli net peer info
 {
     "peers": [
