@@ -30,6 +30,7 @@ cd chain33_consortium
 
  ##### 2.1 区块链参数配置：
 修改样例中的配置文件 chain33.toml，将以下两处的 IP 地址替换为所部署节点的 IP
+注意：防火墙要放行8801， 13802， 46656几个端口  
 
 ```ini
 # 修改P2P种子节点参数
@@ -43,6 +44,7 @@ channel=8001
 [consensus.sub.tendermint]
 # 使用自己服务器的IP替换以下IP，端口不变
 validatorNodes=["10.0.0.1:46656","10.0.0.2:46656","10.0.0.3:46656","10.0.0.4:46656"]
+
 ```
 
 ##### 2.2 节点公私钥配置
@@ -57,7 +59,7 @@ chain33  chain33-cli  chain33.toml  genesis.json priv_validator.json
 - 在4个节点上启动 chain33，顺序不分前后，建议在一分钟内全都启动
 
 ```ini
-nohup ./chain33 -f chain33.test.toml >> log.out 2>&1 &
+nohup ./chain33 -f chain33.toml >> log.out 2>&1 &
 ```
 
 #### 4. 区块链状态检查
